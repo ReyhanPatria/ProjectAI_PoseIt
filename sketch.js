@@ -5,3 +5,15 @@ function setup() {
 function draw() {
 
 }
+
+function masterberubaj() {
+
+}
+
+function apalah() {
+
+}
+
+function tatanggoblok() {
+	
+}
