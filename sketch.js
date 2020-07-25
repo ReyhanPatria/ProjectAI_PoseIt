@@ -9,3 +9,7 @@ function draw() {
 function moveBall() {
 	
 }
+
+function buatanLinel(){
+	
+}
