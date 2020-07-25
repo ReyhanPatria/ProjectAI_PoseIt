@@ -11,5 +11,9 @@ function moveBall() {
 }
 
 function buatanLinel(){
+
+}
+
+function linelBuat2Kali(){
 	
 }
