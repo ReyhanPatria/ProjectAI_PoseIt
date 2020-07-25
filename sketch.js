@@ -5,27 +5,3 @@ function setup() {
 function draw() {
 
 }
-
-function moveBall() {
-	
-}
-
-function detectpose(){
-	
-}
-	
-function buatanLinel(){
-
-}
-
-function linelBuat2Kali(){
-	
-}
-
-function lineltega(){
-
-}
-
-function mvpbucin(){
-	
-}
