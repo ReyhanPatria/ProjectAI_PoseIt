@@ -5,3 +5,7 @@ function setup() {
 function draw() {
 
 }
+
+function moveBall() {
+	
+}
