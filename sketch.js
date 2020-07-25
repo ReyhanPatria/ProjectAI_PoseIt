@@ -6,7 +6,6 @@ function draw() {
 
 }
 
-<<<<<<< HEAD
 function masterberubaj() {
 
 }
