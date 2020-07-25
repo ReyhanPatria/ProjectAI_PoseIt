@@ -25,3 +25,7 @@ function linelBuat2Kali(){
 function lineltega(){
 
 }
+
+function mvpbucin(){
+	
+}
