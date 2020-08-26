@@ -1,37 +1,74 @@
 class StartMenu {
     constructor() {
-        this.headerRect = loadImage("assets/HeaderRect.png");
-        this.startButton = loadImage("assets/StartButton.png");
-        this.startTitle = loadImage("assets/StartTitle.png");
-        this.startSubtitle = loadImage("assets/StartSubtitle.png");
+        this.headerRect = {
+            image: loadImage("assets/HeaderRect.png"),
+            x: 0,
+            y: 0,
+
+            show: function() {
+                image(this.image, this.x, this.y);
+            }
+        }
+
+        this.startTitle = {
+            image: loadImage("assets/StartTitle.png"),
+            x: 100,
+            y: 140,
+
+            show: function() {
+                image(this.image, this.x, this.y);
+            }
+        }
+
+        this.startSubtitle = {
+            image: loadImage("assets/StartSubtitle.png"),
+            x: 100,
+            y: 380,
+
+            show: function() {
+                image(this.image, this.x, this.y);
+            }
+        }
+
+        this.startButton = {
+            image: loadImage("assets/StartButton.png"),
+            x: 100,
+            y: 500,
+
+            show: function() {
+                image(this.image, this.x, this.y);
+                this.mouseHover();
+            },
+            
+            mouseHover: function() {
+                if(mouseX < this.x + this.image.width && mouseX > this.x) {
+                    if(mouseY < this.y + this.image.height && mouseY > this.y) {
+                        cursor(HAND);
+                    }
+                }
+            },
+
+            mousePressed: function() {
+                if(mouseX < this.x + this.image.width && mouseX > this.x) {
+                    if(mouseY < this.y + this.image.height && mouseY > this.y) {
+                        changeMenu(new ChooseAgeMenu());
+                    }
+                }
+            }
+        }
     }
 
     drawMenu() {
         background(255);
-        this.drawCursor();
-        
-        image(this.headerRect, 0, 0);
-        image(this.startTitle, 100, 140);
-        image(this.startSubtitle, 100, 380);
-        image(this.startButton, 100, 500);
+        cursor(ARROW);
+
+        this.headerRect.show();
+        this.startTitle.show();
+        this.startSubtitle.show();
+        this.startButton.show();
     }
 
     mousePressed() {
-        if(mouseX < 100 + this.startButton.width && mouseX > 100) {
-            if(mouseY < 500 + this.startButton.height && mouseY > 500) {
-                changeMenu(new ChooseAgeMenu());
-                console.log("pressed");
-            }
-        }
-    }
-
-    drawCursor() {
-        cursor(ARROW);
-
-        if(mouseX < 100 + this.startButton.width && mouseX > 100) {
-            if(mouseY < 500 + this.startButton.height && mouseY > 500) {
-                cursor(HAND);
-            }
-        }
+        this.startButton.mousePressed();
     }
 }

@@ -1,28 +1,148 @@
 class ChooseAgeMenu {
     constructor() {
-        this.headerRect = loadImage("assets/HeaderRect.png");
-        this.chooseAgeTitle = loadImage("assets/ChooseAgeTitle.png");
-        this.childButton = loadImage("assets/ChildButton.png");
-        this.adultButton = loadImage("assets/AdultButton.png");
-        this.oldButton = loadImage("assets/OldButton.png");
+        this.headerRect = {
+            image: loadImage("assets/HeaderRect.png"),
+            x: 0,
+            y: 0,
+
+            show: function() {
+                image(this.image, this.x, this.y);
+            }
+        }
+
+        this.chooseAgeTitle = {
+            image: loadImage("assets/ChooseAgeTitle.png"),
+            x: 150,
+            y: 250,
+
+            show: function() {
+                image(this.image, this.x, this.y);
+            }
+        }
+
+        this.childButton = {
+            image: loadImage("assets/ChildButton.png"),
+            imageRatio: 0.7,
+            x: 780,
+            y: 140,
+
+            getWidth: function() {
+                return this.image.width * this.imageRatio;
+            },
+
+            getHeight: function() {
+                return this.image.height * this.imageRatio;
+            },
+
+            show: function() {
+                image(this.image, this.x, this.y, this.getWidth(), this.getHeight());
+                this.mouseHover();
+            },
+            
+            mouseHover: function() {
+                if(mouseX < this.x + this.getWidth() && mouseX > this.x) {
+                    if(mouseY < this.y + this.getHeight() && mouseY > this.y) {
+                        cursor(HAND);
+                    }
+                }
+            },
+
+            mousePressed: function() {
+                if(mouseX < this.x + this.getWidth() && mouseX > this.x) {
+                    if(mouseY < this.getHeight() && mouseY > this.y) {
+
+                    }
+                }
+            }
+        }
+
+        this.adultButton = {
+            image: loadImage("assets/AdultButton.png"),
+            imageRatio: 0.7,
+            x: 765,
+            y: 300,
+
+            getWidth: function() {
+                return this.image.width * this.imageRatio;
+            },
+
+            getHeight: function() {
+                return this.image.height * this.imageRatio;
+            },
+
+            show: function() {
+                image(this.image, this.x, this.y, this.getWidth(), this.getHeight());
+                this.mouseHover();
+            },
+            
+            mouseHover: function() {
+                if(mouseX < this.x + this.getWidth() && mouseX > this.x) {
+                    if(mouseY < this.y + this.getHeight() && mouseY > this.y) {
+                        cursor(HAND);
+                    }
+                }
+            },
+
+            mousePressed: function() {
+                if(mouseX < this.x + this.getWidth() && mouseX > this.x) {
+                    if(mouseY < this.getHeight() && mouseY > this.y) {
+
+                    }
+                }
+            }
+        }
+
+        this.oldButton = {
+            image: loadImage("assets/OldButton.png"),
+            imageRatio: 0.7,
+            x: 780,
+            y: 480,
+
+            getWidth: function() {
+                return this.image.width * this.imageRatio;
+            },
+
+            getHeight: function() {
+                return this.image.height * this.imageRatio;
+            },
+
+            show: function() {
+                image(this.image, this.x, this.y, this.getWidth(), this.getHeight());
+                this.mouseHover();
+            },
+            
+            mouseHover: function() {
+                if(mouseX < this.x + this.getWidth() && mouseX > this.x) {
+                    if(mouseY < this.y + this.getHeight() && mouseY > this.y) {
+                        cursor(HAND);
+                    }
+                }
+            },
+
+            mousePressed: function() {
+                if(mouseX < this.x + this.getWidth() && mouseX > this.x) {
+                    if(mouseY < this.getHeight() && mouseY > this.y) {
+
+                    }
+                }
+            }
+        }
     }
 
     drawMenu() {
         background(255);
-        this.drawCursor();
+        cursor(ARROW);
 
-        image(this.headerRect, 0, 0);
-        image(this.chooseAgeTitle, 150, 250);
-        image(this.childButton, 780, 140, this.childButton.width * 0.7, this.childButton.height * 0.7);
-        image(this.adultButton, 765, 295, this.adultButton.width * 0.7, this.adultButton.height * 0.7);
-        image(this.oldButton, 780, 480, this.oldButton.width * 0.7, this.oldButton.height * 0.7);
+        this.headerRect.show();
+        this.chooseAgeTitle.show();
+        this.childButton.show();
+        this.adultButton.show();
+        this.oldButton.show();
     }
 
     mousePressed() {
-
-    }
-
-    drawCursor() {
-        cursor(ARROW);
+        this.childButton.mousePressed();
+        this.adultButton.mousePressed();
+        this.oldButton.mousePressed();
     }
 }
