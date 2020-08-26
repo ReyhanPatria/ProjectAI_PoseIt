@@ -9,6 +9,8 @@ class ChooseAgeMenu {
 
     drawMenu() {
         background(255);
+        this.drawCursor();
+
         image(this.headerRect, 0, 0);
         image(this.chooseAgeTitle, 150, 250);
         image(this.childButton, 780, 140, this.childButton.width * 0.7, this.childButton.height * 0.7);
@@ -18,5 +20,9 @@ class ChooseAgeMenu {
 
     mousePressed() {
 
+    }
+
+    drawCursor() {
+        cursor(ARROW);
     }
 }

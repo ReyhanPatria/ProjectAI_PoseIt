@@ -8,6 +8,8 @@ class StartMenu {
 
     drawMenu() {
         background(255);
+        this.drawCursor();
+        
         image(this.headerRect, 0, 0);
         image(this.startTitle, 100, 140);
         image(this.startSubtitle, 100, 380);
@@ -19,6 +21,16 @@ class StartMenu {
             if(mouseY < 500 + this.startButton.height && mouseY > 500) {
                 changeMenu(new ChooseAgeMenu());
                 console.log("pressed");
+            }
+        }
+    }
+
+    drawCursor() {
+        cursor(ARROW);
+
+        if(mouseX < 100 + this.startButton.width && mouseX > 100) {
+            if(mouseY < 500 + this.startButton.height && mouseY > 500) {
+                cursor(HAND);
             }
         }
     }
