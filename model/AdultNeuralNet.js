@@ -7,13 +7,25 @@ class AdultNeuralNet {
             debug: true
         };
 
-        this.poseLabel = [
-            "Angkat Kaki Kiri",
-            "Angkat Kaki Kanan",
-            "hand_push_left",
-            "hand_push_right",
-            "body_tilt_left_with_hand",
-            "body_tilt_right_with_hand"
+        this.pose = [{
+                label: "Angkat Kaki Kiri",
+                image: loadImage("assets/pose/Kaki Angkat Kiri.jpg")
+            }, {
+                label: "Angkat Kaki Kanan",
+                image: loadImage("assets/pose/Kaki Angkat Kanan.jpg")
+            }, {
+                label: "hand_push_left",
+                image: loadImage("assets/pose/Tangan Dorong Kiri.jpg")
+            }, {
+                label: "hand_push_right",
+                image: loadImage("assets/pose/Tangan Dorong Kanan.jpg")
+            }, {
+                label: "body_tilt_left_with_hand",
+                image: loadImage("assets/pose/Badan Miring Kiri Dengan Tangan.jpg")
+            }, {
+                label: "body_tilt_right_with_hand",
+                image: loadImage("assets/pose/Badan Miring Kanan Dengan Tangan.jpg")
+            }
         ];
 
         this.model = [

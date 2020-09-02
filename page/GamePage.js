@@ -63,6 +63,7 @@ function draw() {
     headerRect.show();
     webcam.show();
     drawPose();
+    drawPoseImage();
 
     textSize(50);
     textAlign(CENTER);
@@ -84,13 +85,21 @@ function drawBackground() {
     rect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
 }
 
+function drawPoseImage() {
+    let imageRatio = 5;
+    let width = neuralNet.pose[currentPoseIdx].image.width * imageRatio;
+    let height = neuralNet.pose[currentPoseIdx].image.height * imageRatio;
+    let x = canvas.width * 3 / 4 - width / 2;
+    let y = 100;
 
+    image(neuralNet.pose[currentPoseIdx].image, x, y, width, height);
+}
 
 
 
 // Game Logic
 function checkCurrentPose() {
-    currentPoseLabel = neuralNet.poseLabel[currentPoseIdx];
+    currentPoseLabel = neuralNet.pose[currentPoseIdx].label;
 
     if(currentPoseScore >= 100) {
         currentPoseScore = 0;
@@ -100,7 +109,7 @@ function checkCurrentPose() {
             currentNeuralNetIdx++;
         }
 
-        if(currentPoseIdx >= neuralNet.poseLabel.length || currentNeuralNetIdx >= neuralNet.model.length) {
+        if(currentPoseIdx >= neuralNet.pose.length || currentNeuralNetIdx >= neuralNet.model.length) {
             window.location.href = "index.html";
         }
     }
