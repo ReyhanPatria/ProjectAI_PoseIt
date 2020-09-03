@@ -85,16 +85,20 @@ function drawBackground() {
 }
 
 function drawPoseImage() {
-    let imageRatio = 5;
     let poseImage = poseAssets.images[currentPoseLabel];
 
     if(poseImage) {
-        let width = poseImage.width * imageRatio;
-        let height = poseImage.height * imageRatio;
-        let x = canvas.width * 3 / 4 - width / 2;
+        let imageRatio = 5;
+        let width = poseImage.width;
+        let height = poseImage.height;
+        if(width >= canvas.width / 2) {
+            imageRatio =  canvas.width / (2 * width);
+        }
+
+        let x = canvas.width * 3 / 4 - width * imageRatio / 2;
         let y = 100;
 
-        image(poseImage, x, y, width, height);
+        image(poseImage, x, y, width * imageRatio, height * imageRatio);
     }
 }
 
@@ -112,7 +116,7 @@ function checkCurrentPose() {
         if(currentPoseIdx >= expectedPoses.length) {
             currentPoseIdx = 0;
             currentNeuralNetIdx++;
-        
+
             if(currentNeuralNetIdx >= neuralNet.model.length) {
                 window.location.href = "index.html";
             }

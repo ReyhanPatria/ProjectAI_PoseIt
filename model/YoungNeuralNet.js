@@ -11,14 +11,23 @@ class YoungNeuralNet {
 
         this.model = [
             {
-                modeName: "angkat_kaki_belakang",
+                modeName: "angkat_kaki",
                 instance: ml5.neuralNetwork(this.neuralNetOptions),
                 modelDetails: {
-                    model: 'model/model_angkat_kaki_belakang/model.json',
-                    metadata: 'model/model_angkat_kaki_belakang/model_meta.json',
-                    weights: 'model/model_angkat_kaki_belakang/model.weights.bin'
+                    model: 'model/model_angkat_kaki/model.json',
+                    metadata: 'model/model_angkat_kaki/model_meta.json',
+                    weights: 'model/model_angkat_kaki/model.weights.bin'
                 }
-            }, 
+            },
+            {
+                modeName: "body_tilt",
+                instance: ml5.neuralNetwork(this.neuralNetOptions),
+                modelDetails: {
+                    model: 'model/model_body_tilt_with_hand/model.json',
+                    metadata: 'model/model_body_tilt_with_hand/model_meta.json',
+                    weights: 'model/model_body_tilt_with_hand/model.weights.bin'
+                }
+            },
             {
                 modeName: "hand_push",
                 instance: ml5.neuralNetwork(this.neuralNetOptions),
@@ -29,12 +38,21 @@ class YoungNeuralNet {
                 }
             },
             {
-                modeName: "body_tilt",
+                modeName: "head_tilt",
                 instance: ml5.neuralNetwork(this.neuralNetOptions),
                 modelDetails: {
-                    model: 'model/model_body_tilt_with_hand/model.json',
-                    metadata: 'model/model_body_tilt_with_hand/model_meta.json',
-                    weights: 'model/model_body_tilt_with_hand/model.weights.bin'
+                    model: 'model/model_head_tilt_with_hand/model.json',
+                    metadata: 'model/model_head_tilt_with_hand/model_meta.json',
+                    weights: 'model/model_head_tilt_with_hand/model.weights.bin'
+                }
+            },
+            {
+                modeName: "lunge",
+                instance: ml5.neuralNetwork(this.neuralNetOptions),
+                modelDetails: {
+                    model: 'model/model_lunge/model.json',
+                    metadata: 'model/model_lunge/model_meta.json',
+                    weights: 'model/model_lunge/model.weights.bin'
                 }
             }
         ];
