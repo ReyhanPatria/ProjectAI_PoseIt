@@ -63,13 +63,8 @@ function draw() {
     headerRect.show();
     webcam.show();
     drawPose();
-    drawPoseImage();
-
-    textSize(50);
-    textAlign(CENTER);
-    fill(0);
-    text(currentPoseLabel, canvas.width / 2, 130);
-    text(currentPoseScore, canvas.width / 2, 180)
+    // drawPoseImage();
+    drawPoseLabelAndScore();
 }
 
 function windowResized() {
@@ -99,24 +94,45 @@ function drawPoseImage() {
 
 // Game Logic
 function checkCurrentPose() {
-    currentPoseLabel = neuralNet.pose[currentPoseIdx].label;
+    if(localStorage.getItem("loaded") >= neuralNet.model.length) {
+        let expectedPoses = neuralNet.model[currentNeuralNetIdx].instance.data.meta.outputs.output0.uniqueValues;
 
-    if(currentPoseScore >= 100) {
-        currentPoseScore = 0;
-        currentPoseIdx++;
+        if(expectedPoses[currentPoseIdx] == "neutral") {
+            currentPoseIdx++;
+        }
 
-        if((currentPoseIdx) % 2 == 0) {
+        if(currentPoseIdx >= expectedPoses.length) {
+            currentPoseIdx = 0;
             currentNeuralNetIdx++;
+        
+            if(currentNeuralNetIdx >= neuralNet.model.length) {
+                window.location.href = "index.html";
+            }
         }
 
-        if(currentPoseIdx >= neuralNet.pose.length || currentNeuralNetIdx >= neuralNet.model.length) {
-            window.location.href = "index.html";
+        currentPoseLabel = expectedPoses[currentPoseIdx];
+
+        if(currentPoseLabel == poseNet.poseLabel) {
+            currentPoseScore++;
+
+            if(currentPoseScore >= 100) {
+                currentPoseScore = 0;
+                currentPoseIdx++;
+            }
         }
     }
+}
 
-    if(currentPoseLabel == poseNet.poseLabel) {
-        currentPoseScore++;
-    }
+function drawPoseLabelAndScore() {
+    push();
+
+    textSize(50);
+    textAlign(CENTER);
+    fill(0);
+    text(currentPoseLabel, canvas.width / 2, 130);
+    text(currentPoseScore, canvas.width / 2, 180);
+
+    pop();
 }
 
 

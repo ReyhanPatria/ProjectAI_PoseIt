@@ -1,32 +1,13 @@
 class YoungNeuralNet {
     constructor() {
+        localStorage.setItem("loaded", 0);
+
         this.neuralNetOptions = {
             inputs: 34,
             outputs: 1,
             task: "classification",
             debug: true
         };
-
-        this.pose = [{
-                label: "Angkat Kaki Belakang Kiri",
-                image: loadImage("assets/pose/Kaki Angkat Belakang Kanan.jpg")
-            }, {
-                label: "Angkat Kaki Belakang Kanan",
-                image: loadImage("assets/pose/Kaki Angkat Belakang Kiri.jpg")
-            }, {
-                label: "hand_push_left",
-                image: loadImage("assets/pose/Tangan Dorong Kiri.jpg")
-            }, {
-                label: "hand_push_right",
-                image: loadImage("assets/pose/Tangan Dorong Kanan.jpg")
-            }, {
-                label: "body_tilt_left_with_hand",
-                image: loadImage("assets/pose/Badan Miring Kiri Dengan Tangan.jpg")
-            }, {
-                label: "body_tilt_right_with_hand",
-                image: loadImage("assets/pose/Badan Miring Kanan Dengan Tangan.jpg")
-            }
-        ];
 
         this.model = [
             {
@@ -66,6 +47,7 @@ class YoungNeuralNet {
             let modelDetails = this.model[nn].modelDetails;
             this.model[nn].instance.load(modelDetails, function() {
                 console.log(nn + " loaded");
+                localStorage.setItem("loaded", localStorage.getItem("loaded") + 1);
             })
         }
     }
