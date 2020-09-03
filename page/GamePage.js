@@ -8,6 +8,8 @@ let poseNet = {
     poseLabel: ""
 };
 
+let poseAssets;
+
 let currentNeuralNetIdx = 0;
 let currentPoseIdx = 0;
 let currentPoseLabel = "";
@@ -51,6 +53,8 @@ function setup() {
         }
     }
 
+    poseAssets = new PoseAssets();
+
     loadNeuralNet();
     loadPoseNet();
 }
@@ -63,7 +67,7 @@ function draw() {
     headerRect.show();
     webcam.show();
     drawPose();
-    // drawPoseImage();
+    drawPoseImage();
     drawPoseLabelAndScore();
 }
 
@@ -82,12 +86,16 @@ function drawBackground() {
 
 function drawPoseImage() {
     let imageRatio = 5;
-    let width = neuralNet.pose[currentPoseIdx].image.width * imageRatio;
-    let height = neuralNet.pose[currentPoseIdx].image.height * imageRatio;
-    let x = canvas.width * 3 / 4 - width / 2;
-    let y = 100;
+    let poseImage = poseAssets.images[currentPoseLabel];
 
-    image(neuralNet.pose[currentPoseIdx].image, x, y, width, height);
+    if(poseImage) {
+        let width = poseImage.width * imageRatio;
+        let height = poseImage.height * imageRatio;
+        let x = canvas.width * 3 / 4 - width / 2;
+        let y = 100;
+
+        image(poseImage, x, y, width, height);
+    }
 }
 
 
