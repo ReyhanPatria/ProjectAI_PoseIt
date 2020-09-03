@@ -11,6 +11,9 @@ class PoseAssets {
             "body_tilt_right_with_hand": loadImage("assets/pose/Badan Miring Kanan Dengan Tangan.jpg"), 
             "hand_push_left": loadImage("assets/pose/Tangan Dorong Kiri.jpg"),
             "hand_push_right": loadImage("assets/pose/Tangan Dorong Kanan.jpg"),
+            "lunge_left": loadImage("assets/pose/lunge_left.jpg"),
+            "lunge_right": loadImage("assets/pose/lunge_right.jpg"),
+            "squat": loadImage("assets/pose/squat.png")
         };
     }   
 }
