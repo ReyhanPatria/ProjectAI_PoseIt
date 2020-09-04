@@ -11,6 +11,15 @@ class YoungNeuralNet {
 
         this.model = [
             {
+                modeName: "hand_push",
+                instance: ml5.neuralNetwork(this.neuralNetOptions),
+                modelDetails: {
+                    model: 'model/model_hand_push/model.json',
+                    metadata: 'model/model_hand_push/model_meta.json',
+                    weights: 'model/model_hand_push/model.weights.bin'
+                }
+            },
+            {
                 modeName: "angkat_kaki",
                 instance: ml5.neuralNetwork(this.neuralNetOptions),
                 modelDetails: {
@@ -29,12 +38,12 @@ class YoungNeuralNet {
                 }
             },
             {
-                modeName: "hand_push",
+                modeName: "lunge",
                 instance: ml5.neuralNetwork(this.neuralNetOptions),
                 modelDetails: {
-                    model: 'model/model_hand_push/model.json',
-                    metadata: 'model/model_hand_push/model_meta.json',
-                    weights: 'model/model_hand_push/model.weights.bin'
+                    model: 'model/model_lunge/model.json',
+                    metadata: 'model/model_lunge/model_meta.json',
+                    weights: 'model/model_lunge/model.weights.bin'
                 }
             },
             {
@@ -44,15 +53,6 @@ class YoungNeuralNet {
                     model: 'model/model_head_tilt_with_hand/model.json',
                     metadata: 'model/model_head_tilt_with_hand/model_meta.json',
                     weights: 'model/model_head_tilt_with_hand/model.weights.bin'
-                }
-            },
-            {
-                modeName: "lunge",
-                instance: ml5.neuralNetwork(this.neuralNetOptions),
-                modelDetails: {
-                    model: 'model/model_lunge/model.json',
-                    metadata: 'model/model_lunge/model_meta.json',
-                    weights: 'model/model_lunge/model.weights.bin'
                 }
             }
         ];
