@@ -69,6 +69,15 @@ function draw() {
     drawPose();
     drawPoseImage();
     drawPoseLabelAndScore();
+
+    push();
+
+    fill(0);
+    textSize(50);
+    textAlign(CENTER);
+    text("Pastikan Seluruh Tuhuh Dapat Terlihat!", canvas.width / 2, canvas.height - 20);
+
+    pop();
 }
 
 function windowResized() {
