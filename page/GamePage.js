@@ -118,7 +118,7 @@ function checkCurrentPose() {
             currentNeuralNetIdx++;
 
             if(currentNeuralNetIdx >= neuralNet.model.length) {
-                window.location.href = "index.html";
+                window.location.href = "thankYouPage.html";
             }
         }
 
